@@ -1,0 +1,22 @@
+<sdk:sdk-addon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdk="http://schemas.android.com/sdk/android/addon/4">
+	<sdk:add-on>
+		<sdk:name-id>CMAPI</sdk:name-id>
+		<sdk:name-display>Cyanogenmod API's</sdk:name-display>
+		<sdk:api-level>19</sdk:api-level>
+		<sdk:vendor-id>CM</sdk:vendor-id>
+		<sdk:vendor-display>Cyanogenmod</sdk:vendor-display>
+		<sdk:revision>1</sdk:revision>
+		<sdk:description>Cyanogenmod specific API's. Only for devices running cyanogenmod.</sdk:description>
+		<sdk:desc-url>http://wiki.cyanogenmod.org/w/Development</sdk:desc-url>
+		<sdk:uses-license ref="cmlicense"/>
+		<sdk:archives>
+			<sdk:archive os="any">
+				<sdk:size>5824</sdk:size>
+				<sdk:checksum type="sha1">2ac90bdbf23a9dc770244baec0b4eab5eb4aa296</sdk:checksum>
+				<sdk:url>https://github.com/Danesh/cm_api/raw/master/CmApi.zip</sdk:url>
+			</sdk:archive>
+		</sdk:archives>
+		<sdk:libs></sdk:libs>
+	</sdk:add-on>
+	<sdk:license type="text" id="cmlicense">LICENSE</sdk:license>
+</sdk:sdk-addon>
