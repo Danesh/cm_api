@@ -5,7 +5,7 @@
 		<sdk:api-level>19</sdk:api-level>
 		<sdk:vendor-id>CM</sdk:vendor-id>
 		<sdk:vendor-display>Cyanogenmod</sdk:vendor-display>
-		<sdk:revision>1</sdk:revision>
+		<sdk:revision>2</sdk:revision>
 		<sdk:description>Cyanogenmod specific API's. Only for devices running cyanogenmod.</sdk:description>
 		<sdk:desc-url>http://wiki.cyanogenmod.org/w/Development</sdk:desc-url>
 		<sdk:uses-license ref="cmlicense"/>

@@ -1,5 +1,5 @@
 API_VERSION=19
-REVISION=1
+REVISION=2
 
 file_ext=${1##*.}
 if [ "$file_ext" != "jar" ];
@@ -27,7 +27,7 @@ REPOSITORY_CONTENT="<sdk:sdk-addon xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-
 			<sdk:archive os=\"any\">
 				<sdk:size>$SIZE</sdk:size>
 				<sdk:checksum type=\"sha1\">$SHASUM</sdk:checksum>
-				<sdk:url>https://github.com/Danesh/cm_api/raw/master/CmApi.zip</sdk:url>
+				<sdk:url>https://github.com/Danesh/cm_api/blob/master/CmApi.zip?raw=true</sdk:url>
 			</sdk:archive>
 		</sdk:archives>
 		<sdk:libs></sdk:libs>
@@ -77,7 +77,7 @@ cd CMAPI
 mkdir libs
 
 cp $JAR libs/cmapi.jar
-echo "$REPOSITORY_CONTENT" > manifest.ini
+echo "$MANIFEST_CONTENT" > manifest.ini
 
 cd ..
 zip -r CmApi.zip CMAPI
