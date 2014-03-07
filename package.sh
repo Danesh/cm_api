@@ -1,41 +1,9 @@
+######################
+# Tweak these values #
+######################
 API_VERSION=19
 REVISION=2
-
-file_ext=${1##*.}
-if [ "$file_ext" != "jar" ];
-then
-    echo "Not a jar !"
-    exit
-fi
-
-JAR=$1
-SHASUM=`sha1sum $JAR | cut -f1 -d" "`
-SIZE=`stat -c %s $JAR`
-
-REPOSITORY_CONTENT="<sdk:sdk-addon xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:sdk=\"http://schemas.android.com/sdk/android/addon/4\">
-	<sdk:add-on>
-		<sdk:name-id>CMAPI</sdk:name-id>
-		<sdk:name-display>Cyanogenmod API's</sdk:name-display>
-		<sdk:api-level>$API_VERSION</sdk:api-level>
-		<sdk:vendor-id>CM</sdk:vendor-id>
-		<sdk:vendor-display>Cyanogenmod</sdk:vendor-display>
-		<sdk:revision>$REVISION</sdk:revision>
-		<sdk:description>Cyanogenmod specific API's. Only for devices running cyanogenmod.</sdk:description>
-		<sdk:desc-url>http://wiki.cyanogenmod.org/w/Development</sdk:desc-url>
-		<sdk:uses-license ref=\"cmlicense\"/>
-		<sdk:archives>
-			<sdk:archive os=\"any\">
-				<sdk:size>$SIZE</sdk:size>
-				<sdk:checksum type=\"sha1\">$SHASUM</sdk:checksum>
-				<sdk:url>https://github.com/Danesh/cm_api/blob/master/CmApi.zip?raw=true</sdk:url>
-			</sdk:archive>
-		</sdk:archives>
-		<sdk:libs></sdk:libs>
-	</sdk:add-on>
-	<sdk:license type=\"text\" id=\"cmlicense\">LICENSE</sdk:license>
-</sdk:sdk-addon>"
-
-
+######################
 
 MANIFEST_CONTENT="# SDK Add-on Manifest
 # File encoding is UTF-8
@@ -70,15 +38,56 @@ libraries=org.cyanogenmod.support
 #             the add-on folder in libs/
 org.cyanogenmod.support=cmapi.jar;Cyanogenmod Api's"
 
-echo "$REPOSITORY_CONTENT" > repository.xml
+ZIP="CmApi.zip"
+
+# Validate if the file input is a jar
+file_ext=${1##*.}
+if [ "$file_ext" != "jar" ];
+then
+    echo "Not a jar !"
+    exit
+fi
 
 mkdir CMAPI
 cd CMAPI
-mkdir libs
 
-cp $JAR libs/cmapi.jar
+# Copy the jar into the libs directory
+mkdir libs
+cp $1 libs/cmapi.jar
+
+# Create the manifest
 echo "$MANIFEST_CONTENT" > manifest.ini
 
+# Zip up the entire folder
 cd ..
-zip -r CmApi.zip CMAPI
+zip -r $ZIP CMAPI
 rm -rf CMAPI
+
+SHASUM=`sha1sum $ZIP | cut -f1 -d" "`
+SIZE=`stat -c %s $ZIP`
+
+REPOSITORY_CONTENT="<sdk:sdk-addon xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:sdk=\"http://schemas.android.com/sdk/android/addon/4\">
+	<sdk:add-on>
+		<sdk:name-id>CMAPI</sdk:name-id>
+		<sdk:name-display>Cyanogenmod API's</sdk:name-display>
+		<sdk:api-level>$API_VERSION</sdk:api-level>
+		<sdk:vendor-id>CM</sdk:vendor-id>
+		<sdk:vendor-display>Cyanogenmod</sdk:vendor-display>
+		<sdk:revision>$REVISION</sdk:revision>
+		<sdk:description>Cyanogenmod specific API's. Only for devices running cyanogenmod.</sdk:description>
+		<sdk:desc-url>http://wiki.cyanogenmod.org/w/Development</sdk:desc-url>
+		<sdk:uses-license ref=\"cmlicense\"/>
+		<sdk:archives>
+			<sdk:archive os=\"any\">
+				<sdk:size>$SIZE</sdk:size>
+				<sdk:checksum type=\"sha1\">$SHASUM</sdk:checksum>
+				<sdk:url>https://github.com/Danesh/cm_api/blob/master/CmApi.zip?raw=true</sdk:url>
+			</sdk:archive>
+		</sdk:archives>
+		<sdk:libs></sdk:libs>
+	</sdk:add-on>
+	<sdk:license type=\"text\" id=\"cmlicense\">LICENSE</sdk:license>
+</sdk:sdk-addon>"
+
+echo "$REPOSITORY_CONTENT" > repository.xml
+
