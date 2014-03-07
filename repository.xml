@@ -11,8 +11,8 @@
 		<sdk:uses-license ref="cmlicense"/>
 		<sdk:archives>
 			<sdk:archive os="any">
-				<sdk:size>7010</sdk:size>
-				<sdk:checksum type="sha1">6ac66d131f94209205ef935b91e014146e65904f</sdk:checksum>
+				<sdk:size>10854</sdk:size>
+				<sdk:checksum type="sha1">504846e50b2e9d737c51acc7c484a3018f8e5e88</sdk:checksum>
 				<sdk:url>https://github.com/Danesh/cm_api/blob/master/CmApi.zip?raw=true</sdk:url>
 			</sdk:archive>
 		</sdk:archives>

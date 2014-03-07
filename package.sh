@@ -2,7 +2,7 @@
 # Tweak these values #
 ######################
 API_VERSION=19
-REVISION=2
+REVISION=3
 ######################
 
 MANIFEST_CONTENT="# SDK Add-on Manifest
