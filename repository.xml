@@ -5,14 +5,14 @@
 		<sdk:api-level>19</sdk:api-level>
 		<sdk:vendor-id>CM</sdk:vendor-id>
 		<sdk:vendor-display>Cyanogenmod</sdk:vendor-display>
-		<sdk:revision>2</sdk:revision>
+		<sdk:revision>5</sdk:revision>
 		<sdk:description>Cyanogenmod specific API's. Only for devices running cyanogenmod.</sdk:description>
 		<sdk:desc-url>http://wiki.cyanogenmod.org/w/Development</sdk:desc-url>
 		<sdk:uses-license ref="cmlicense"/>
 		<sdk:archives>
 			<sdk:archive os="any">
-				<sdk:size>10854</sdk:size>
-				<sdk:checksum type="sha1">504846e50b2e9d737c51acc7c484a3018f8e5e88</sdk:checksum>
+				<sdk:size>11077</sdk:size>
+				<sdk:checksum type="sha1">5e71c227bef866d3ce52053afa0b842634e4ae1c</sdk:checksum>
 				<sdk:url>https://github.com/Danesh/cm_api/blob/master/CmApi.zip?raw=true</sdk:url>
 			</sdk:archive>
 		</sdk:archives>
